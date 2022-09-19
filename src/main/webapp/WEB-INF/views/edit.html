@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit customer</title>
+</head>
+<body>
+<h1>Edit Product</h1>
+<p>
+    <a href="/home">Product List</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit}" th:object="${productForm}" method="post" novalidate="novalidate"
+      enctype="multipart/form-data">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" th:field="*{price}"/></td>
+        </tr>
+        <tr>
+            <td>Old Image:</td>
+            <td><img th:src="@{'/image/'+${editPro.getImg()}}" width="100" height="100"></td>
+        </tr>
+        <tr>
+            <td>New Image:</td>
+            <td><input type="file" th:field="*{img}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update Product"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

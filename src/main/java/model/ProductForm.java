@@ -1,33 +1,27 @@
 package model;
 
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "product")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class ProductForm {
     private String id;
     private String name;
     private double price;
-    private String image;
+    private MultipartFile img;
 
-    public Product() {
+    public ProductForm() {
     }
 
-
-    public Product(String name, double price, String image) {
-        this.name = name;
-        this.price = price;
-        this.image = image;
-    }
-
-    public Product(String id, String name, double price, String image) {
+    public ProductForm(String id, String name, double price) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.image = image;
+    }
+
+    public ProductForm(String id, String name, double price, MultipartFile img) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.img = img;
     }
 
     public String getId() {
@@ -54,11 +48,11 @@ public class Product {
         this.price = price;
     }
 
-    public String getImage() {
-        return image;
+    public MultipartFile getImg() {
+        return img;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImg(MultipartFile img) {
+        this.img = img;
     }
 }
